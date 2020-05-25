@@ -30,7 +30,7 @@ public class Lambda {
         }).start();
     }
 
-    public static int sum(final List<Integer> numbers, final Function<Integer, Boolean> filter) {
+    private static int sum(final List<Integer> numbers, final Function<Integer, Boolean> filter) {
         return numbers.stream()
                 .filter(filter::apply)
                 .reduce(ZERO, Integer::sum);
