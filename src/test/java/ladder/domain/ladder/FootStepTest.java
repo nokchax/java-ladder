@@ -18,4 +18,6 @@ class FootStepTest {
         assertThat(FootStep.valueOf(type)).isNotNull();
     }
 
+//    @ParameterizedTest
+//    @DisplayName("첫기둥의 발판은 NONE이거나 RIGHT밖에 안된다.")
 }
