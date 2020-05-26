@@ -7,6 +7,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
+import static ladder.util.Static.FALSE_RETURN_STRATEGY;
+import static ladder.util.Static.TRUE_RETURN_STRATEGY;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -22,8 +24,8 @@ class FootStepStrategyTest {
 
     private static Stream<Arguments> isGenerable() {
         return Stream.of(
-                Arguments.of((FootStepStrategy)() -> true, true),
-                Arguments.of((FootStepStrategy)() -> false, false)
+                Arguments.of(TRUE_RETURN_STRATEGY, true),
+                Arguments.of(FALSE_RETURN_STRATEGY, false)
         );
     }
 
