@@ -24,6 +24,10 @@ public class Column {
           return new Column(footStep.next(footStepStrategy));
      }
 
+     public Column last() {
+          return new Column(footStep.last());
+     }
+
      @Override
      public boolean equals(Object o) {
           if (this == o) return true;

@@ -22,6 +22,14 @@ public enum FootStep {
         return makeFootStep(footStepStrategy);
     }
 
+    public FootStep last() {
+        if (this == RIGHT) {
+            return LEFT;
+        }
+
+        return NONE;
+    }
+
     private static FootStep makeFootStep(final FootStepStrategy footStepStrategy) {
         validate(footStepStrategy);
         if (footStepStrategy.isGenerable()) {
