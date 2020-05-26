@@ -2,6 +2,8 @@ package ladder.domain.ladder;
 
 import ladder.domain.ladder.footstep.FootStepStrategy;
 
+import java.util.Objects;
+
 //발판
 public enum FootStep {
     LEFT,
@@ -21,10 +23,17 @@ public enum FootStep {
     }
 
     private static FootStep makeFootStep(final FootStepStrategy footStepStrategy) {
+        validate(footStepStrategy);
         if (footStepStrategy.isGenerable()) {
             return RIGHT;
         }
 
         return NONE;
+    }
+
+    private static void validate(final FootStepStrategy footStepStrategy) {
+        if (Objects.isNull(footStepStrategy)) {
+            throw new IllegalArgumentException("FootStepStrategy can't be a null");
+        }
     }
 }

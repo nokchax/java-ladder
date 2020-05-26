@@ -2,6 +2,7 @@ package ladder.domain.ladder;
 
 import ladder.domain.ladder.footstep.FootStepStrategy;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -11,8 +12,7 @@ import java.util.stream.Stream;
 
 import static ladder.util.Static.FALSE_RETURN_STRATEGY;
 import static ladder.util.Static.TRUE_RETURN_STRATEGY;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("발판 테스트")
 class FootStepTest {
@@ -56,4 +56,28 @@ class FootStepTest {
                 Arguments.of(FootStep.NONE, FALSE_RETURN_STRATEGY, FootStep.NONE)
         );
     }
+
+    @Test
+    @DisplayName("발판 생성 전략이 null일 경우 예외 발생")
+    void initException() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> FootStep.init(null));
+    }
+
+    @ParameterizedTest
+    @MethodSource
+    @DisplayName("next 발판 생성 전략이 null일 경우 예외 발생")
+    void nextException(final FootStep footStep) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> footStep.next(null));
+    }
+
+    private static Stream<Arguments> nextException() {
+        return Stream.of(
+                Arguments.of(FootStep.LEFT),
+                Arguments.of(FootStep.NONE)
+                //RIGHT는 없어도 생성가능.
+        );
+    }
+
 }
