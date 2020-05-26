@@ -6,6 +6,7 @@ import ladder.domain.ladder.footstep.FootStepStrategy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 // 사다리 한단
@@ -20,7 +21,7 @@ public class Step {
         columns.add(Column.init(footStepStrategy));
 
         Stream.generate(() -> createNextColumn(footStepStrategy))
-                .limit(ladderInitInfo.getLadderHeight() - 2) //remove first and last
+                .limit(ladderInitInfo.playerCount() - 2) //remove first and last
                 .forEach(columns::add);
 
         columns.add(createEndColumn());
@@ -34,6 +35,12 @@ public class Step {
 
     public static Step init(final LadderInitInfo ladderInitInfo) {
         return new Step(ladderInitInfo);
+    }
+
+    public List<Boolean> toFootSteps() {
+        return columns.stream()
+                .map(Column::toRightFootStep)
+                .collect(Collectors.toList());
     }
 
     private Column createNextColumn(final FootStepStrategy footStepStrategy) {

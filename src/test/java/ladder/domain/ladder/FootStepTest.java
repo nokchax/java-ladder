@@ -1,5 +1,6 @@
 package ladder.domain.ladder;
 
+import ladder.domain.init.LadderInitInfo;
 import ladder.domain.ladder.footstep.FootStepStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,6 +9,8 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 import static ladder.util.Static.FALSE_RETURN_STRATEGY;
@@ -94,4 +97,21 @@ class FootStepTest {
                 Arguments.of(FootStep.NONE, FootStep.NONE)
         );
     }
+
+    @ParameterizedTest
+    @MethodSource
+    @DisplayName("컬럼을 기준으로 오른쪽 발판이 있는지 테스트")
+    void toFootSteps(final LadderInitInfo ladderInitInfo, final List<Boolean> expected) {
+        assertThat(Step.init(ladderInitInfo).toFootSteps()).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> toFootSteps() {
+        List<String> names = Arrays.asList("name1", "name2", "name3", "name4", "name5");
+
+        return Stream.of(
+                Arguments.of(LadderInitInfo.init(names, () -> true), Arrays.asList(true, false, true, false, false)),
+                Arguments.of(LadderInitInfo.init(names, () -> false), Arrays.asList(false, false, false, false, false))
+        );
+    }
+
 }

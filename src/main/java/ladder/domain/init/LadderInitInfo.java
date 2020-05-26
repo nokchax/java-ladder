@@ -6,10 +6,23 @@ import ladder.domain.ladder.footstep.HalfChanceGenerator;
 import java.util.List;
 
 public class LadderInitInfo {
-    private FootStepStrategy footStepStrategy = new HalfChanceGenerator();
-    private List<String> names;
+    private final FootStepStrategy footStepStrategy;
+    private final List<String> names;
     private List<String> prizes;
     private int ladderHeight;
+
+    private LadderInitInfo(final List<String> names, final FootStepStrategy footStepStrategy) {
+        this.names = names;
+        this.footStepStrategy = footStepStrategy;
+    }
+
+    public static LadderInitInfo init(final List<String> names, final FootStepStrategy footStepStrategy) {
+        return new LadderInitInfo(names, footStepStrategy);
+    }
+
+    public static LadderInitInfo init(final List<String> names) {
+        return new LadderInitInfo(names, new HalfChanceGenerator());
+    }
 
     public FootStepStrategy getFootStepStrategy() {
         return footStepStrategy;

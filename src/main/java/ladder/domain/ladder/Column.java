@@ -28,6 +28,10 @@ public class Column {
           return new Column(footStep.last());
      }
 
+     public boolean toRightFootStep() {
+          return footStep == FootStep.RIGHT;
+     }
+
      @Override
      public boolean equals(Object o) {
           if (this == o) return true;
