@@ -80,4 +80,18 @@ class FootStepTest {
         );
     }
 
+    @ParameterizedTest
+    @MethodSource
+    @DisplayName("마지막 발판 생성 테스트")
+    void last(final FootStep footStep, final FootStep expected) {
+        assertThat(footStep.last()).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> last() {
+        return Stream.of(
+                Arguments.of(FootStep.LEFT, FootStep.NONE),
+                Arguments.of(FootStep.RIGHT, FootStep.LEFT),
+                Arguments.of(FootStep.NONE, FootStep.NONE)
+        );
+    }
 }
