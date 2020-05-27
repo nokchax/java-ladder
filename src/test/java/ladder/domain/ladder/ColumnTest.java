@@ -1,6 +1,6 @@
 package ladder.domain.ladder;
 
-import ladder.domain.ladder.footstep.FootStepStrategy;
+import ladder.domain.ladder.footstep.FootStepCreateStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -26,8 +26,8 @@ class ColumnTest {
     @ParameterizedTest
     @MethodSource
     @DisplayName("기둥의 다음 기둥 생성 테스트")
-    void next(final Column column, final FootStepStrategy footStepStrategy, final Column expected) {
-        assertThat(column.next(footStepStrategy)).isEqualTo(expected);
+    void next(final Column column, final FootStepCreateStrategy footStepCreateStrategy, final Column expected) {
+        assertThat(column.next(footStepCreateStrategy)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> next() {

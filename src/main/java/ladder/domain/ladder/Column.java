@@ -1,6 +1,6 @@
 package ladder.domain.ladder;
 
-import ladder.domain.ladder.footstep.FootStepStrategy;
+import ladder.domain.ladder.footstep.FootStepCreateStrategy;
 
 import java.util.Objects;
 
@@ -8,20 +8,20 @@ import java.util.Objects;
 public class Column {
      private final FootStep footStep;
 
-     private Column(final FootStepStrategy footStepStrategy) {
-          this.footStep = FootStep.init(footStepStrategy);
+     private Column(final FootStepCreateStrategy footStepCreateStrategy) {
+          this.footStep = FootStep.init(footStepCreateStrategy);
      }
 
      public Column(final FootStep footStep) {
           this.footStep = footStep;
      }
 
-     public static Column init(final FootStepStrategy footStepStrategy) {
-          return new Column(footStepStrategy);
+     public static Column init(final FootStepCreateStrategy footStepCreateStrategy) {
+          return new Column(footStepCreateStrategy);
      }
 
-     public Column next(FootStepStrategy footStepStrategy) {
-          return new Column(footStep.next(footStepStrategy));
+     public Column next(final FootStepCreateStrategy footStepCreateStrategy) {
+          return new Column(footStep.next(footStepCreateStrategy));
      }
 
      public Column last() {

@@ -1,35 +1,35 @@
 package ladder.domain.init;
 
-import ladder.domain.ladder.footstep.FootStepStrategy;
+import ladder.domain.ladder.footstep.FootStepCreateStrategy;
 import ladder.domain.ladder.footstep.HalfChanceGenerator;
 
 import java.util.List;
 
 public class LadderInitInfo {
-    private final FootStepStrategy footStepStrategy;
+    private final FootStepCreateStrategy footStepCreateStrategy;
     private final List<String> names;
     private final int ladderHeight;
 
     private LadderInitInfo(final List<String> names,
                            final int ladderHeight,
-                           final FootStepStrategy footStepStrategy) {
+                           final FootStepCreateStrategy footStepCreateStrategy) {
         this.names = names;
         this.ladderHeight = ladderHeight;
-        this.footStepStrategy = footStepStrategy;
+        this.footStepCreateStrategy = footStepCreateStrategy;
     }
 
     public static LadderInitInfo init(final List<String> names,
                                       final int ladderHeight,
-                                      final FootStepStrategy footStepStrategy) {
-        return new LadderInitInfo(names, ladderHeight, footStepStrategy);
+                                      final FootStepCreateStrategy footStepCreateStrategy) {
+        return new LadderInitInfo(names, ladderHeight, footStepCreateStrategy);
     }
 
     public static LadderInitInfo init(final List<String> names, final int ladderHeight) {
         return new LadderInitInfo(names, ladderHeight, new HalfChanceGenerator());
     }
 
-    public FootStepStrategy getFootStepStrategy() {
-        return footStepStrategy;
+    public FootStepCreateStrategy getFootStepCreateStrategy() {
+        return footStepCreateStrategy;
     }
 
     public List<String> getNames() {

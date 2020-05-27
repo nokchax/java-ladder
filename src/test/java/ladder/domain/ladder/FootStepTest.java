@@ -1,7 +1,7 @@
 package ladder.domain.ladder;
 
 import ladder.domain.init.LadderInitInfo;
-import ladder.domain.ladder.footstep.FootStepStrategy;
+import ladder.domain.ladder.footstep.FootStepCreateStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -31,8 +31,8 @@ class FootStepTest {
     @ParameterizedTest
     @MethodSource
     @DisplayName("첫기둥의 발판은 NONE이거나 RIGHT밖에 안된다.")
-    void init(final FootStepStrategy footStepStrategy, final FootStep expected) {
-        assertThat(FootStep.init(footStepStrategy)).isEqualTo(expected);
+    void init(final FootStepCreateStrategy footStepCreateStrategy, final FootStep expected) {
+        assertThat(FootStep.init(footStepCreateStrategy)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> init() {
@@ -45,8 +45,8 @@ class FootStepTest {
     @ParameterizedTest
     @MethodSource
     @DisplayName("다음 기둥의 발판은 현재 기준으로 정해진다")
-    void next(final FootStep curFootStep, final FootStepStrategy footStepStrategy, final FootStep expected) {
-        assertThat(curFootStep.next(footStepStrategy)).isEqualTo(expected);
+    void next(final FootStep curFootStep, final FootStepCreateStrategy footStepCreateStrategy, final FootStep expected) {
+        assertThat(curFootStep.next(footStepCreateStrategy)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> next() {

@@ -2,7 +2,7 @@ package ladder.domain.ladder.footstep;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class HalfChanceGenerator implements FootStepStrategy {
+public class HalfChanceGenerator implements FootStepCreateStrategy {
 
     @Override
     public boolean isGenerable() {

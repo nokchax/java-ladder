@@ -1,5 +1,5 @@
 package ladder.domain.ladder.footstep;
 
-public interface FootStepStrategy {
+public interface FootStepCreateStrategy {
     boolean isGenerable();
 }

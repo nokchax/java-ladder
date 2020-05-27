@@ -3,7 +3,7 @@ package ladder.domain.dto;
 import java.util.List;
 
 public class StepDto {
-    private List<Boolean> footSteps;
+    private final List<Boolean> footSteps;
 
     private StepDto(final List<Boolean> footSteps) {
         validate(footSteps);

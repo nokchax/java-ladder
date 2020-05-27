@@ -13,13 +13,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @DisplayName("발판 생성 전략 인터페이스 테스트")
-class FootStepStrategyTest {
+class FootStepCreateStrategyTest {
 
     @ParameterizedTest
     @MethodSource
     @DisplayName("생성 가능한지")
-    void isGenerable(final FootStepStrategy footStepStrategy, final boolean expected) {
-        assertThat(footStepStrategy.isGenerable()).isEqualTo(expected);
+    void isGenerable(final FootStepCreateStrategy footStepCreateStrategy, final boolean expected) {
+        assertThat(footStepCreateStrategy.isGenerable()).isEqualTo(expected);
     }
 
     private static Stream<Arguments> isGenerable() {

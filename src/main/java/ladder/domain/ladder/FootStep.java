@@ -1,6 +1,6 @@
 package ladder.domain.ladder;
 
-import ladder.domain.ladder.footstep.FootStepStrategy;
+import ladder.domain.ladder.footstep.FootStepCreateStrategy;
 
 import java.util.Objects;
 
@@ -10,16 +10,16 @@ public enum FootStep {
     RIGHT,
     NONE;
 
-    public static FootStep init(final FootStepStrategy footStepStrategy) {
-        return makeFootStep(footStepStrategy);
+    public static FootStep init(final FootStepCreateStrategy footStepCreateStrategy) {
+        return makeFootStep(footStepCreateStrategy);
     }
 
-    public FootStep next(final FootStepStrategy footStepStrategy) {
+    public FootStep next(final FootStepCreateStrategy footStepCreateStrategy) {
         if (this == RIGHT) {
             return LEFT;
         }
 
-        return makeFootStep(footStepStrategy);
+        return makeFootStep(footStepCreateStrategy);
     }
 
     public FootStep last() {
@@ -30,17 +30,17 @@ public enum FootStep {
         return NONE;
     }
 
-    private static FootStep makeFootStep(final FootStepStrategy footStepStrategy) {
-        validate(footStepStrategy);
-        if (footStepStrategy.isGenerable()) {
+    private static FootStep makeFootStep(final FootStepCreateStrategy footStepCreateStrategy) {
+        validate(footStepCreateStrategy);
+        if (footStepCreateStrategy.isGenerable()) {
             return RIGHT;
         }
 
         return NONE;
     }
 
-    private static void validate(final FootStepStrategy footStepStrategy) {
-        if (Objects.isNull(footStepStrategy)) {
+    private static void validate(final FootStepCreateStrategy footStepCreateStrategy) {
+        if (Objects.isNull(footStepCreateStrategy)) {
             throw new IllegalArgumentException("FootStepStrategy can't be a null");
         }
     }
