@@ -106,11 +106,9 @@ class FootStepTest {
     }
 
     private static Stream<Arguments> toFootSteps() {
-        List<String> names = Arrays.asList("name1", "name2", "name3", "name4", "name5");
-
         return Stream.of(
-                Arguments.of(LadderInitInfo.init(names, 1, () -> true), Arrays.asList(true, false, true, false, false)),
-                Arguments.of(LadderInitInfo.init(names, 1, () -> false), Arrays.asList(false, false, false, false, false))
+                Arguments.of(LadderInitInfo.init(1, 5, () -> true), Arrays.asList(true, false, true, false, false)),
+                Arguments.of(LadderInitInfo.init(1, 5, () -> false), Arrays.asList(false, false, false, false, false))
         );
     }
 

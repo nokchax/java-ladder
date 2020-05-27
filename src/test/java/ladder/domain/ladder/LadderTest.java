@@ -25,7 +25,7 @@ class LadderTest {
     @DisplayName("초기화 : 성공후 사다리 높이가 정확한지")
     void height() {
         int height = 5;
-        LadderInitInfo ladderInitInfo = LadderInitInfo.init(NAMES, height);
+        LadderInitInfo ladderInitInfo = LadderInitInfo.init(height, 1);
         Ladder ladder = Ladder.init(ladderInitInfo);
 
         assertThat(ladder.getSteps()).hasSize(height);
@@ -44,6 +44,6 @@ class LadderTest {
     @DisplayName("초기화 실패 : 사다리 높이가 음수")
     void initFailWithNegativeHeight(final int height) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> Ladder.init(LadderInitInfo.init(NAMES, height)));
+                .isThrownBy(() -> Ladder.init(LadderInitInfo.init(height, 1)));
     }
 }

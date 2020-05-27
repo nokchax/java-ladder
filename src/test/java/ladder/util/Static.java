@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Static {
     public static final List<String> NAMES = Arrays.asList("name1", "name2", "name3", "name4", "name5");
-    public static final int HEIGHT = 5;
+    public static final int HEIGHT = 5, WIDTH = 5;
     public static final FootStepCreateStrategy TRUE_RETURN_STRATEGY = () -> true;
     public static final FootStepCreateStrategy FALSE_RETURN_STRATEGY = () -> false;
 
@@ -18,8 +18,8 @@ public class Static {
     public static final Column COLUMN_WITHOUT_FOOTSTEP = Column.init(FALSE_RETURN_STRATEGY);
 
     public static final LadderInitInfo LADDER_INIT_INFO_WITH_TRUE_STRATEGY =
-            LadderInitInfo.init(NAMES, HEIGHT, TRUE_RETURN_STRATEGY);
+            LadderInitInfo.init(HEIGHT, WIDTH, TRUE_RETURN_STRATEGY);
     public static final LadderInitInfo LADDER_INIT_INFO_WITH_FALSE_STRATEGY =
-            LadderInitInfo.init(NAMES, HEIGHT, FALSE_RETURN_STRATEGY);
+            LadderInitInfo.init(HEIGHT, WIDTH, FALSE_RETURN_STRATEGY);
     private Static() {}
 }
