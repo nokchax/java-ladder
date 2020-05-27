@@ -13,7 +13,7 @@ public class LadderGameTest {
     private static final List<String> NAMES = Arrays.asList("name1", "name2", "name3", "name4", "name5");
 
     @Test
-    @DisplayName("초기화 : 사람 이름 리스트를 받아 초기화 한다")
+    @DisplayName("초기화 : 초기화 정보를 받아 초기화 한다")
     void init() {
         assertThatCode(() -> LadderGame.init(NAMES)).doesNotThrowAnyException();
     }

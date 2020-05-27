@@ -8,20 +8,24 @@ import java.util.List;
 public class LadderInitInfo {
     private final FootStepStrategy footStepStrategy;
     private final List<String> names;
-    private List<String> prizes;
-    private int ladderHeight;
+    private final int ladderHeight;
 
-    private LadderInitInfo(final List<String> names, final FootStepStrategy footStepStrategy) {
+    private LadderInitInfo(final List<String> names,
+                           final int ladderHeight,
+                           final FootStepStrategy footStepStrategy) {
         this.names = names;
+        this.ladderHeight = ladderHeight;
         this.footStepStrategy = footStepStrategy;
     }
 
-    public static LadderInitInfo init(final List<String> names, final FootStepStrategy footStepStrategy) {
-        return new LadderInitInfo(names, footStepStrategy);
+    public static LadderInitInfo init(final List<String> names,
+                                      final int ladderHeight,
+                                      final FootStepStrategy footStepStrategy) {
+        return new LadderInitInfo(names, ladderHeight, footStepStrategy);
     }
 
-    public static LadderInitInfo init(final List<String> names) {
-        return new LadderInitInfo(names, new HalfChanceGenerator());
+    public static LadderInitInfo init(final List<String> names, final int ladderHeight) {
+        return new LadderInitInfo(names, ladderHeight, new HalfChanceGenerator());
     }
 
     public FootStepStrategy getFootStepStrategy() {
@@ -30,10 +34,6 @@ public class LadderInitInfo {
 
     public List<String> getNames() {
         return names;
-    }
-
-    public List<String> getPrizes() {
-        return prizes;
     }
 
     public int getLadderHeight() {
