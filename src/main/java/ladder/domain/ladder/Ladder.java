@@ -4,6 +4,7 @@ import ladder.domain.dto.StepDto;
 import ladder.domain.init.LadderInitInfo;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -20,7 +21,7 @@ public class Ladder {
     }
 
     private void validate(final LadderInitInfo ladderInitInfo) {
-        if (ladderInitInfo == null) {
+        if (Objects.isNull(ladderInitInfo)) {
             throw new IllegalArgumentException("Ladder init info is null");
         }
 

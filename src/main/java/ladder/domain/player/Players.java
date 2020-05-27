@@ -25,7 +25,9 @@ public class Players {
         return new Players(names);
     }
 
-    public int getPlayersCount() {
-        return players.size();
+    public List<String> getPlayersName() {
+        return players.stream()
+                .map(Player::getName)
+                .collect(Collectors.toList());
     }
 }
