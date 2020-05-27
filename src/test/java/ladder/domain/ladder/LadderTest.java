@@ -9,17 +9,26 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static ladder.util.Static.LADDER_INIT_INFO_WITH_TRUE_STRATEGY;
 import static ladder.util.Static.NAMES;
-import static org.assertj.core.api.Assertions.assertThatCode;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("사다리 객체 테스트")
 class LadderTest {
 
     @Test
-    @DisplayName("초기화 테스트")
+    @DisplayName("초기화 : 성공")
     void init() {
         assertThatCode(() -> Ladder.init(LADDER_INIT_INFO_WITH_TRUE_STRATEGY))
                 .doesNotThrowAnyException();
+    }
+
+    @Test
+    @DisplayName("초기화 : 성공후 사다리 높이가 정확한지")
+    void height() {
+        int height = 5;
+        LadderInitInfo ladderInitInfo = LadderInitInfo.init(NAMES, height);
+        Ladder ladder = Ladder.init(ladderInitInfo);
+
+        assertThat(ladder.getSteps()).hasSize(height);
     }
 
     @ParameterizedTest
