@@ -50,7 +50,7 @@ public class Step {
         columns.add(Column.init(ladderInitInfo.getFootStepCreateStrategy()));
     }
 
-    private void validate(LadderInitInfo ladderInitInfo) {
+    private void validate(final LadderInitInfo ladderInitInfo) {
         if (Objects.isNull(ladderInitInfo)) {
             throw new IllegalArgumentException("Init info is null");
         }

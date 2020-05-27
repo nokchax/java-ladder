@@ -19,7 +19,7 @@ public class Ladder {
                 .collect(Collectors.toList());
     }
 
-    private void validate(LadderInitInfo ladderInitInfo) {
+    private void validate(final LadderInitInfo ladderInitInfo) {
         if (ladderInitInfo == null) {
             throw new IllegalArgumentException("Ladder init info is null");
         }

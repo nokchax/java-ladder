@@ -61,7 +61,6 @@ class StepTest {
     void initWidthLengthIsTwo() {
         List<Boolean> footSteps = Step.init(LadderInitInfo.init(1, 2)).toFootSteps();
 
-        assertThat(footSteps.get(1))
-                .isFalse();
+        assertThat(footSteps.get(1)).isFalse();
     }
 }

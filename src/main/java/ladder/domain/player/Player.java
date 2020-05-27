@@ -4,7 +4,7 @@ import ladder.util.StringUtil;
 
 public class Player {
     public static final int MAX_LENGTH_OF_PLAYER_NAME = 5;
-    private String name;
+    private final String name;
     //private int idx; //or no
 
     private Player(final String name) {
@@ -25,5 +25,9 @@ public class Player {
 
     public static Player init(final String name) {
         return new Player(name);
+    }
+
+    public String getName() {
+        return name;
     }
 }

@@ -8,7 +8,6 @@ import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static ladder.util.Static.LADDER_INIT_INFO_WITH_TRUE_STRATEGY;
-import static ladder.util.Static.NAMES;
 import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("사다리 객체 테스트")
