@@ -5,9 +5,7 @@ import ladder.domain.ladder.footstep.FootStepCreateStrategy;
 import ladder.util.ObjectUtil;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -21,14 +19,14 @@ public class Step {
         validate(ladderInitInfo);
 
         columns = new ArrayList<>(ladderInitInfo.getLadderWidth());
-        createHead(ladderInitInfo);
+        createFirst(ladderInitInfo);
         createMid(ladderInitInfo);
-        createTail(ladderInitInfo);
+        createLast(ladderInitInfo);
     }
 
-    private void createTail(final LadderInitInfo ladderInitInfo) {
+    private void createLast(final LadderInitInfo ladderInitInfo) {
         if (ladderInitInfo.getLadderWidth() > MINIMUM_LADDER_WIDTH) {
-            columns.add(createEndColumn());
+            columns.add(createLastColumn());
         }
     }
 
@@ -42,7 +40,7 @@ public class Step {
                 .forEach(columns::add);
     }
 
-    private void createHead(final LadderInitInfo ladderInitInfo) {
+    private void createFirst(final LadderInitInfo ladderInitInfo) {
         if (ladderInitInfo.getLadderWidth() == MINIMUM_LADDER_WIDTH) {
             columns.add(Column.init(() -> false));
             return;
@@ -73,7 +71,7 @@ public class Step {
         return getLastColumn().next(footStepCreateStrategy);
     }
 
-    private Column createEndColumn() {
+    private Column createLastColumn() {
         return getLastColumn().last();
     }
 
