@@ -55,4 +55,23 @@ class ColumnTest {
                 Arguments.of(COLUMN_WITHOUT_FOOTSTEP, COLUMN_WITHOUT_FOOTSTEP)
         );
     }
+
+    @ParameterizedTest
+    @MethodSource
+    @DisplayName("기둥간의 이동 테스트")
+    void takeLadder(final Column column, final int before, final int expected) {
+        assertThat(column.takeLadder(before)).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> takeLadder() {
+        Column columnWithoutFootStep = Column.init(() -> false);
+        Column columnWithRightFootStep = Column.init(() -> true);
+        Column columnWithLeftFootStep = columnWithRightFootStep.next(() -> true);
+
+        return Stream.of(
+                Arguments.of(columnWithoutFootStep, 0, 0),
+                Arguments.of(columnWithRightFootStep, 0, 1),
+                Arguments.of(columnWithLeftFootStep, 1, 0)
+        );
+    }
 }

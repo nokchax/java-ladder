@@ -28,6 +28,10 @@ public class Column {
           return new Column(footStep.last());
      }
 
+     public int takeLadder(final int curPosition) {
+          return footStep.takeLadder(curPosition);
+     }
+
      public boolean toRightFootStep() {
           return footStep == FootStep.RIGHT;
      }
