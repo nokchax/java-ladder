@@ -15,7 +15,7 @@ public class ObjectUtil {
         checkNull(DEFAULT_NULL_EXCEPTION_MESSAGE, parameters);
     }
 
-    public static <T> void checkNull(T parameters, final String exceptionMsg) {
+    public static <T> void checkNull(final T parameters, final String exceptionMsg) {
         if(parameters == null) {
             throw new IllegalArgumentException(exceptionMsg);
         }
