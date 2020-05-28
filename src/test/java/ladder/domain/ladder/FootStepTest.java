@@ -112,4 +112,19 @@ class FootStepTest {
         );
     }
 
+    @ParameterizedTest
+    @MethodSource
+    @DisplayName("발판의 타입에 따라 받은 인덱스의 값을 변경해준다")
+    void move(final FootStep footStep, final int index, final int expected) {
+        assertThat(footStep.move(index)).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> move() {
+        return Stream.of(
+                Arguments.of(FootStep.LEFT, 1, 0),
+                Arguments.of(FootStep.NONE, 1, 1),
+                Arguments.of(FootStep.RIGHT, 1, 2)
+        );
+    }
+
 }
