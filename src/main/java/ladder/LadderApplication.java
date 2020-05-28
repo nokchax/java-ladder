@@ -10,6 +10,7 @@ import java.util.List;
 public class LadderApplication {
     public static void main(String[] args) {
         List<String> players = ConsoleInput.inputPlayers();
+        List<String> prizes = ConsoleInput.inputPrizes();
         int ladderHeight = ConsoleInput.inputHeight();
 
         LadderGame ladderGame = LadderGame.init(LadderGameInitInfo.init(players, ladderHeight));
