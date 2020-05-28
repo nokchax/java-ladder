@@ -5,7 +5,6 @@ import ladder.domain.init.LadderInitInfo;
 import ladder.util.ObjectUtil;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -33,8 +32,12 @@ public class Ladder {
         return new Ladder(ladderInitInfo);
     }
 
-    //int takeLadder(int startPosition);
-    //reduce
+    public int takeLadder(final int startPosition) {
+        return steps.stream()
+                .reduce(startPosition,
+                        (byPosition, step) -> step.takeLadder(byPosition),
+                        (x, y) -> {throw new RuntimeException("Can't reduce in parallel environment");});
+    }
 
     public List<StepDto> getSteps() {
         return steps.stream()

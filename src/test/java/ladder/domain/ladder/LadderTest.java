@@ -4,8 +4,12 @@ import ladder.domain.init.LadderInitInfo;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.stream.Stream;
 
 import static ladder.util.Static.LADDER_INIT_INFO_WITH_TRUE_STRATEGY;
 import static org.assertj.core.api.Assertions.*;
@@ -44,5 +48,24 @@ class LadderTest {
     void initFailWithNegativeHeight(final int height) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> Ladder.init(LadderInitInfo.init(height, 1)));
+    }
+
+    @ParameterizedTest
+    @MethodSource
+    @DisplayName("사다리 여러개를 탔을때 테스트")
+    void takeLadder(final Ladder ladder, final int startPosition, final int expected) {
+        assertThat(ladder.takeLadder(startPosition)).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> takeLadder() {
+        Ladder ladder = Ladder.init(LadderInitInfo.init(3, 5, () -> true));
+
+        return Stream.of(
+                Arguments.of(ladder, 0, 1),
+                Arguments.of(ladder, 1, 0),
+                Arguments.of(ladder, 2, 3),
+                Arguments.of(ladder, 3, 2),
+                Arguments.of(ladder, 4, 4)
+        );
     }
 }
