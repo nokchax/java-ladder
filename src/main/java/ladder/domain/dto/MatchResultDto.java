@@ -2,25 +2,32 @@ package ladder.domain.dto;
 
 import ladder.util.ObjectUtil;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 public class MatchResultDto {
-    private final List<String> players;
+    private final Map<String, String> playerAndPrize;
     private final List<StepDto> steps;
 
-    private MatchResultDto(final List<String> playersName, final List<StepDto> steps) {
-        ObjectUtil.checkNull(playersName, steps);
+    private MatchResultDto(final Map<String, String> playerAndPrize, final List<StepDto> steps) {
+        ObjectUtil.checkNull(playerAndPrize, steps);
 
-        this.players = playersName;
+        this.playerAndPrize = playerAndPrize;
         this.steps = steps;
     }
 
-    public static MatchResultDto of(final List<String> playersName, final List<StepDto> steps) {
-        return new MatchResultDto(playersName, steps);
+    public static MatchResultDto of(final Map<String, String> playerAndPrize, final List<StepDto> steps) {
+        return new MatchResultDto(playerAndPrize, steps);
     }
 
     public List<String> getPlayers() {
-        return players;
+        return new ArrayList<>(playerAndPrize.keySet());
+    }
+
+    public List<String> getPrizes() {
+        return new ArrayList<>(playerAndPrize.values());
     }
 
     public List<StepDto> getSteps() {

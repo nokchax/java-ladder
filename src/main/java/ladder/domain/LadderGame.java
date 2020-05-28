@@ -3,8 +3,9 @@ package ladder.domain;
 import ladder.domain.dto.MatchResultDto;
 import ladder.domain.init.LadderGameInitInfo;
 import ladder.domain.ladder.Ladder;
-import ladder.domain.ladder.TakeLadderResult;
 import ladder.util.ObjectUtil;
+
+import java.util.Map;
 
 public class LadderGame {
     private final PlayerAndPrize playerAndPrize;
@@ -22,8 +23,9 @@ public class LadderGame {
     }
 
     public MatchResultDto getMatchResult() {
-        TakeLadderResult takeLadderResult = ladder.takeLadders();
+        Map<String, String> playerAndPrizeMatchResult =
+                playerAndPrize.matchPlayerAndPrize(ladder.takeLadders());
 
-        return MatchResultDto.of(playerAndPrize.getPlayers(), ladder.getSteps());
+        return MatchResultDto.of(playerAndPrizeMatchResult, ladder.getSteps());
     }
 }
