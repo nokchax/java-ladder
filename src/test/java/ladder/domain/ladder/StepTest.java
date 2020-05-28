@@ -63,4 +63,30 @@ class StepTest {
 
         assertThat(footSteps.get(1)).isFalse();
     }
+
+    @ParameterizedTest
+    @MethodSource
+    @DisplayName("사다리 한칸에 대한 사다리 타기 테스트")
+    void takeALadder(final Step step, final int curPosition, final int expected) {
+        assertThat(step.takeLadder(curPosition)).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> takeALadder() {
+        Step ladderWithEvenIdxHasFooStep = Step.init(LadderInitInfo.init(1, 5, () -> true));
+        Step ladderWithoutFootStep = Step.init(LadderInitInfo.init(1, 5, () -> false));
+
+        return Stream.of(
+                Arguments.of(ladderWithEvenIdxHasFooStep, 0, 1),
+                Arguments.of(ladderWithEvenIdxHasFooStep, 1, 0),
+                Arguments.of(ladderWithEvenIdxHasFooStep, 2, 3),
+                Arguments.of(ladderWithEvenIdxHasFooStep, 3, 2),
+                Arguments.of(ladderWithEvenIdxHasFooStep, 4, 4),
+
+                Arguments.of(ladderWithoutFootStep, 0, 0),
+                Arguments.of(ladderWithoutFootStep, 1, 1),
+                Arguments.of(ladderWithoutFootStep, 2, 2),
+                Arguments.of(ladderWithoutFootStep, 3, 3),
+                Arguments.of(ladderWithoutFootStep, 4, 4)
+        );
+    }
 }

@@ -61,6 +61,11 @@ public class Step {
         return new Step(ladderInitInfo);
     }
 
+    public int takeLadder(final int curPosition) {
+        return columns.get(curPosition)
+                .takeLadder(curPosition);
+    }
+
     public List<Boolean> toFootSteps() {
         return columns.stream()
                 .map(Column::toRightFootStep)
