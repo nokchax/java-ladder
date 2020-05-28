@@ -4,7 +4,6 @@ import ladder.util.StringUtil;
 
 public class Prize {
     private final String prize;
-    //private int idx; //or no
 
     private Prize(final String prize) {
         validate(prize);

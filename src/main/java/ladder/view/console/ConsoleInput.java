@@ -24,7 +24,7 @@ public class ConsoleInput {
         return split(namesString);
     }
 
-    private static List<String> split(String namesString) {
+    private static List<String> split(final String namesString) {
         return Stream.of(namesString.split(SPLITTER))
                 .map(String::trim)
                 .collect(Collectors.toList());

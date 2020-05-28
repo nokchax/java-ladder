@@ -21,7 +21,7 @@ public enum FootStep {
         return makeFootStep(footStepCreateStrategy);
     }
 
-    public FootStep next(final FootStepCreateStrategy footStepCreateStrategy) {
+    public FootStep createNext(final FootStepCreateStrategy footStepCreateStrategy) {
         if (this == RIGHT) {
             return LEFT;
         }
@@ -29,7 +29,7 @@ public enum FootStep {
         return makeFootStep(footStepCreateStrategy);
     }
 
-    public FootStep last() {
+    public FootStep createLast() {
         if (this == RIGHT) {
             return LEFT;
         }
@@ -39,6 +39,7 @@ public enum FootStep {
 
     private static FootStep makeFootStep(final FootStepCreateStrategy footStepCreateStrategy) {
         validate(footStepCreateStrategy);
+
         if (footStepCreateStrategy.isGenerable()) {
             return RIGHT;
         }
@@ -50,7 +51,7 @@ public enum FootStep {
         ObjectUtil.checkNull(footStepCreateStrategy, "FootStepStrategy can't be a null");
     }
 
-    public Integer takeLadder(final int index) {
+    public Integer moveThroughFootStep(final int index) {
         return mover.apply(index);
     }
 }

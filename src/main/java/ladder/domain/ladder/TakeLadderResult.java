@@ -6,6 +6,7 @@ import java.util.List;
 
 public class TakeLadderResult {
     private static final int ZERO = 0;
+
     private final List<Integer> matchPositions;
 
     private TakeLadderResult(final List<Integer> matchPositions) {

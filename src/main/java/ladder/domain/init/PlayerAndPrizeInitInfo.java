@@ -27,7 +27,7 @@ public class PlayerAndPrizeInitInfo {
         return prizes;
     }
 
-    public int playerCount() {
+    public int getPlayerCount() {
         return names.size();
     }
 }

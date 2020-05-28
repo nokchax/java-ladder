@@ -10,7 +10,8 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Ladder {
-    static final int MINIMUM_HEIGHT_OF_LADDER = 1;
+    private static final int MINIMUM_HEIGHT_OF_LADDER = 1;
+
     private final List<Step> steps;
 
     private Ladder(final LadderInitInfo ladderInitInfo) {
@@ -34,7 +35,8 @@ public class Ladder {
     }
 
     public TakeLadderResult takeLadders() {
-        int ladderWidth = steps.get(0).getLadderWidth();
+        int ladderWidth = steps.get(0)
+                .getLadderWidth();
 
         List<Integer> matchPositions = IntStream.range(0, ladderWidth)
                 .map(this::takeLadder)

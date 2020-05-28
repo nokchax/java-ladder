@@ -46,7 +46,7 @@ class FootStepTest {
     @MethodSource
     @DisplayName("다음 기둥의 발판은 현재 기준으로 정해진다")
     void next(final FootStep curFootStep, final FootStepCreateStrategy footStepCreateStrategy, final FootStep expected) {
-        assertThat(curFootStep.next(footStepCreateStrategy)).isEqualTo(expected);
+        assertThat(curFootStep.createNext(footStepCreateStrategy)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> next() {
@@ -72,7 +72,7 @@ class FootStepTest {
     @DisplayName("next 발판 생성 전략이 null일 경우 예외 발생")
     void nextException(final FootStep footStep) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> footStep.next(null));
+                .isThrownBy(() -> footStep.createNext(null));
     }
 
     private static Stream<Arguments> nextException() {
@@ -87,7 +87,7 @@ class FootStepTest {
     @MethodSource
     @DisplayName("마지막 발판 생성 테스트")
     void last(final FootStep footStep, final FootStep expected) {
-        assertThat(footStep.last()).isEqualTo(expected);
+        assertThat(footStep.createLast()).isEqualTo(expected);
     }
 
     private static Stream<Arguments> last() {
@@ -116,7 +116,7 @@ class FootStepTest {
     @MethodSource
     @DisplayName("발판의 타입에 따라 받은 인덱스의 값을 변경해준다")
     void move(final FootStep footStep, final int index, final int expected) {
-        assertThat(footStep.takeLadder(index)).isEqualTo(expected);
+        assertThat(footStep.moveThroughFootStep(index)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> move() {

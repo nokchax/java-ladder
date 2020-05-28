@@ -77,11 +77,11 @@ public class Step {
     }
 
     private Column createNextColumn(final FootStepCreateStrategy footStepCreateStrategy) {
-        return getLastColumn().next(footStepCreateStrategy);
+        return getLastColumn().createNext(footStepCreateStrategy);
     }
 
     private Column createLastColumn() {
-        return getLastColumn().last();
+        return getLastColumn().createLast();
     }
 
     private Column getLastColumn() {

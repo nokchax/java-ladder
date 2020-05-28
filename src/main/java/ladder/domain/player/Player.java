@@ -5,7 +5,6 @@ import ladder.util.StringUtil;
 public class Player {
     public static final int MAX_LENGTH_OF_PLAYER_NAME = 5;
     private final String name;
-    //private int idx; //or no
 
     private Player(final String name) {
         validate(name);

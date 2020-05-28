@@ -2,8 +2,6 @@ package ladder.domain.init;
 
 import ladder.util.ObjectUtil;
 
-import java.util.List;
-
 public class LadderGameInitInfo {
     private final LadderInitInfo ladderInitInfo;
     private final PlayerAndPrizeInitInfo playerAndPrizeInitInfo;
@@ -12,7 +10,7 @@ public class LadderGameInitInfo {
         ObjectUtil.checkNull(playerAndPrizeInitInfo, "PlayerAndPrizeInitInfo is null");
 
         this.playerAndPrizeInitInfo = playerAndPrizeInitInfo;
-        this.ladderInitInfo = LadderInitInfo.init(height, playerAndPrizeInitInfo.playerCount());
+        this.ladderInitInfo = LadderInitInfo.init(height, playerAndPrizeInitInfo.getPlayerCount());
     }
 
     public static LadderGameInitInfo init(final PlayerAndPrizeInitInfo playerAndPrizeInitInfo, final int height) {
@@ -25,13 +23,5 @@ public class LadderGameInitInfo {
 
     public PlayerAndPrizeInitInfo getPlayerAndPrizeInitInfo() {
         return playerAndPrizeInitInfo;
-    }
-
-    public List<String> getNames() {
-        return playerAndPrizeInitInfo.getNames();
-    }
-
-    public List<String> getPrizes() {
-        return playerAndPrizeInitInfo.getPrizes();
     }
 }

@@ -3,7 +3,6 @@ package ladder.domain.player;
 import ladder.util.ObjectUtil;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Players {

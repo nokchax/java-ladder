@@ -31,6 +31,6 @@ public class LadderGame {
     }
 
     public LadderDto getLadderInfo() {
-        return LadderDto.of(playerAndPrize.getPlayers(), playerAndPrize.getPrizes(), ladder.getSteps());
+        return LadderDto.of(playerAndPrize, ladder);
     }
 }

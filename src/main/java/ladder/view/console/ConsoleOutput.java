@@ -25,11 +25,13 @@ public class ConsoleOutput {
 
     public static void showResult(final MatchResultDto matchResultDto, final String playerName) {
         System.out.println("실행 결과");
+
         showMatchResult(playerName, matchResultDto.match(playerName));
     }
 
     public static void showAllMatchResult(final MatchResultDto matchResult) {
         System.out.println("실행 결과");
+
         matchResult.getPlayers()
                 .forEach(name -> ConsoleOutput.showMatchResult(name, matchResult.match(name)));
     }
@@ -44,6 +46,7 @@ public class ConsoleOutput {
 
     private static void showStep(final StepDto step) {
         System.out.print(PADDING);
+
         step.getFootSteps()
                 .forEach(footStep -> System.out.print(footStep ? COLUMN_WITH_FOOTSTEP : COLUMN_WITHOUT_FOOTSTEP));
         newLine();
