@@ -7,15 +7,14 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static ladder.util.Static.PRIZES_STRS;
 import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("상품 목록 테스트")
 class PrizesTest {
-    private static final List<String> PRIZES_STRS = Arrays.asList("prize1", "prize2", "prize3", "prize4", "prize5");
     private static final Prizes PRIZES = Prizes.init(PRIZES_STRS);
 
     @Test

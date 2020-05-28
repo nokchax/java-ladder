@@ -7,15 +7,14 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static ladder.util.Static.NAMES;
 import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("플레이어 집단 테스트")
 class PlayersTest {
-    private static final List<String> NAMES = Arrays.asList("name1", "name2", "name3", "name4", "name5");
     private static final Players PLAYERS = Players.init(NAMES);
 
     @Test
