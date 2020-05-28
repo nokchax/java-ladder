@@ -14,4 +14,20 @@ public class PlayerAndPrizeInitInfo {
         this.names = names;
         this.prizes = prizes;
     }
+
+    public static PlayerAndPrizeInitInfo init(final List<String> names, final List<String> prizes) {
+        return new PlayerAndPrizeInitInfo(names, prizes);
+    }
+
+    public List<String> getNames() {
+        return names;
+    }
+
+    public List<String> getPrizes() {
+        return prizes;
+    }
+
+    public int playerCount() {
+        return names.size();
+    }
 }

@@ -3,21 +3,20 @@ package ladder.domain.init;
 import ladder.util.ObjectUtil;
 
 import java.util.List;
-import java.util.Objects;
 
 public class LadderGameInitInfo {
     private final LadderInitInfo ladderInitInfo;
-    private final List<String> names;
+    private final PlayerAndPrizeInitInfo playerAndPrizeInitInfo;
 
-    private LadderGameInitInfo(final List<String> names, final int height) {
-        ObjectUtil.checkNull(names, "Names are null");
+    private LadderGameInitInfo(final PlayerAndPrizeInitInfo playerAndPrizeInitInfo, final int height) {
+        ObjectUtil.checkNull(playerAndPrizeInitInfo, "PlayerAndPrize init info is null");
 
-        this.names = names;
-        this.ladderInitInfo = LadderInitInfo.init(height, names.size());
+        this.playerAndPrizeInitInfo = playerAndPrizeInitInfo;
+        this.ladderInitInfo = LadderInitInfo.init(height, playerAndPrizeInitInfo.playerCount());
     }
 
-    public static LadderGameInitInfo init(final List<String> names, final int height) {
-        return new LadderGameInitInfo(names, height);
+    public static LadderGameInitInfo init(final PlayerAndPrizeInitInfo playerAndPrizeInitInfo, final int height) {
+        return new LadderGameInitInfo(playerAndPrizeInitInfo, height);
     }
 
     public LadderInitInfo getLadderInitInfo() {
@@ -25,6 +24,10 @@ public class LadderGameInitInfo {
     }
 
     public List<String> getNames() {
-        return names;
+        return playerAndPrizeInitInfo.getNames();
+    }
+
+    public List<String>  getPrizes() {
+        return playerAndPrizeInitInfo.getPrizes();
     }
 }

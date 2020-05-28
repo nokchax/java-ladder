@@ -2,6 +2,7 @@ package ladder;
 
 import ladder.domain.LadderGame;
 import ladder.domain.init.LadderGameInitInfo;
+import ladder.domain.init.PlayerAndPrizeInitInfo;
 import ladder.view.console.ConsoleInput;
 import ladder.view.console.ConsoleOutput;
 
@@ -12,8 +13,9 @@ public class LadderApplication {
         List<String> players = ConsoleInput.inputPlayers();
         List<String> prizes = ConsoleInput.inputPrizes();
         int ladderHeight = ConsoleInput.inputHeight();
+        PlayerAndPrizeInitInfo playerAndPrizeInitInfo = PlayerAndPrizeInitInfo.init(players, prizes);
 
-        LadderGame ladderGame = LadderGame.init(LadderGameInitInfo.init(players, ladderHeight));
+        LadderGame ladderGame = LadderGame.init(LadderGameInitInfo.init(playerAndPrizeInitInfo, ladderHeight));
 
         ConsoleOutput.showResult(ladderGame.getMatchResult());
     }
