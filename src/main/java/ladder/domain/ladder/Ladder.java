@@ -2,10 +2,12 @@ package ladder.domain.ladder;
 
 import ladder.domain.dto.StepDto;
 import ladder.domain.init.LadderInitInfo;
+import ladder.domain.match.MatchResult;
 import ladder.util.ObjectUtil;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Ladder {
@@ -30,6 +32,17 @@ public class Ladder {
 
     public static Ladder init(final LadderInitInfo ladderInitInfo) {
         return new Ladder(ladderInitInfo);
+    }
+
+    public MatchResult takeLadders() {
+        int ladderWidth = steps.get(0).getLadderWidth();
+
+        List<Integer> matchPositions = IntStream.range(0, ladderWidth)
+                .map(this::takeLadder)
+                .boxed()
+                .collect(Collectors.toList());
+
+        return MatchResult.init(matchPositions);
     }
 
     public int takeLadder(final int startPosition) {

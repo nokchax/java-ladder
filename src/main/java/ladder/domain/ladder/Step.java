@@ -66,6 +66,10 @@ public class Step {
                 .takeLadder(curPosition);
     }
 
+    public int getLadderWidth() {
+        return columns.size();
+    }
+
     public List<Boolean> toFootSteps() {
         return columns.stream()
                 .map(Column::toRightFootStep)
