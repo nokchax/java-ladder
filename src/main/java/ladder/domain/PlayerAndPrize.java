@@ -1,11 +1,16 @@
 package ladder.domain;
 
 import ladder.domain.init.PlayerAndPrizeInitInfo;
+import ladder.domain.ladder.TakeLadderResult;
 import ladder.domain.player.Players;
 import ladder.domain.prize.Prizes;
 import ladder.util.ObjectUtil;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.regex.MatchResult;
+import java.util.stream.IntStream;
 
 public class PlayerAndPrize {
     private final Players players;
@@ -20,6 +25,20 @@ public class PlayerAndPrize {
 
     public static PlayerAndPrize init(final PlayerAndPrizeInitInfo playerAndPrizeInitInfo) {
         return new PlayerAndPrize(playerAndPrizeInitInfo);
+    }
+
+    public Map<String, String> matchPlayerAndPrize(final TakeLadderResult takeLadderResult) {
+        Map<String, String> playerAndPrize = new LinkedHashMap<>();
+
+        IntStream.range(0, players.getPlayersName().size())
+                .forEach(idx ->
+                        playerAndPrize.put(
+                                players.getPlayerName(idx),
+                                prizes.getPrize(takeLadderResult.getResultPositionOf(idx))
+                        )
+                );
+
+        return playerAndPrize;
     }
 
     public List<String> getPlayers() {

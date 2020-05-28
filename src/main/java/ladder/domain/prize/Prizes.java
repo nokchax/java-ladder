@@ -20,6 +20,11 @@ public class Prizes {
         return new Prizes(prizes);
     }
 
+    public String getPrize(final int idx) {
+        return prizes.get(idx)
+                .getPrize();
+    }
+
     public List<String> getPrizes() {
         return prizes.stream()
                 .map(Prize::getPrize)

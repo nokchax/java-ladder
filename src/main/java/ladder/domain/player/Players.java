@@ -25,6 +25,11 @@ public class Players {
         return new Players(names);
     }
 
+    public String getPlayerName(final int idx) {
+        return players.get(idx)
+                .getName();
+    }
+
     public List<String> getPlayersName() {
         return players.stream()
                 .map(Player::getName)
