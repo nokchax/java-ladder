@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Players {
+    private static final int NUM_OF_MINIMUM_PLAYER = 1;
+
     private final List<Player> players;
 
     private Players(final List<String> names) {
@@ -18,6 +20,10 @@ public class Players {
 
     private void validate(final List<String> names) {
         ObjectUtil.checkNull(names, "Players names is null");
+
+        if (names.size() < NUM_OF_MINIMUM_PLAYER) {
+            throw new IllegalArgumentException("Players size must be at least " + NUM_OF_MINIMUM_PLAYER);
+        }
     }
 
     public static Players init(final List<String> names) {
