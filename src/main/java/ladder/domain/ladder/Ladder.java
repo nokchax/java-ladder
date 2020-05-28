@@ -34,7 +34,7 @@ public class Ladder {
         return new Ladder(ladderInitInfo);
     }
 
-    public TakeLadderResult takeLadders() {
+    public LadderTakeResult takeLadders() {
         int ladderWidth = steps.get(0)
                 .getLadderWidth();
 
@@ -43,7 +43,7 @@ public class Ladder {
                 .boxed()
                 .collect(Collectors.toList());
 
-        return TakeLadderResult.init(matchPositions);
+        return LadderTakeResult.init(matchPositions);
     }
 
     public int takeLadder(final int startPosition) {

@@ -1,7 +1,7 @@
 package ladder.domain;
 
 import ladder.domain.init.PlayerAndPrizeInitInfo;
-import ladder.domain.ladder.TakeLadderResult;
+import ladder.domain.ladder.LadderTakeResult;
 import ladder.domain.player.Players;
 import ladder.domain.prize.Prizes;
 import ladder.util.ObjectUtil;
@@ -26,14 +26,14 @@ public class PlayerAndPrize {
         return new PlayerAndPrize(playerAndPrizeInitInfo);
     }
 
-    public Map<String, String> matchPlayerAndPrize(final TakeLadderResult takeLadderResult) {
+    public Map<String, String> matchPlayerAndPrize(final LadderTakeResult ladderTakeResult) {
         Map<String, String> playerAndPrize = new LinkedHashMap<>();
 
         IntStream.range(0, players.getPlayersName().size())
                 .forEach(idx ->
                         playerAndPrize.put(
                                 players.getPlayerName(idx),
-                                prizes.getPrize(takeLadderResult.getResultPositionOf(idx))
+                                prizes.getPrize(ladderTakeResult.getResultPositionOf(idx))
                         )
                 );
 
