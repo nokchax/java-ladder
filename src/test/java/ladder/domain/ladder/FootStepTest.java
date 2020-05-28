@@ -116,7 +116,7 @@ class FootStepTest {
     @MethodSource
     @DisplayName("발판의 타입에 따라 받은 인덱스의 값을 변경해준다")
     void move(final FootStep footStep, final int index, final int expected) {
-        assertThat(footStep.move(index)).isEqualTo(expected);
+        assertThat(footStep.takeLadder(index)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> move() {
