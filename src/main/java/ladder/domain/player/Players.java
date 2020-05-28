@@ -1,5 +1,7 @@
 package ladder.domain.player;
 
+import ladder.util.ObjectUtil;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -16,9 +18,7 @@ public class Players {
     }
 
     private void validate(final List<String> names) {
-        if (Objects.isNull(names)) {
-            throw new IllegalArgumentException("Players names is null");
-        }
+        ObjectUtil.checkNull(names, "Players names is null");
     }
 
     public static Players init(List<String> names) {

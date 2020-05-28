@@ -2,6 +2,7 @@ package ladder.domain.ladder;
 
 import ladder.domain.dto.StepDto;
 import ladder.domain.init.LadderInitInfo;
+import ladder.util.ObjectUtil;
 
 import java.util.List;
 import java.util.Objects;
@@ -21,9 +22,7 @@ public class Ladder {
     }
 
     private void validate(final LadderInitInfo ladderInitInfo) {
-        if (Objects.isNull(ladderInitInfo)) {
-            throw new IllegalArgumentException("Ladder init info is null");
-        }
+        ObjectUtil.checkNull(ladderInitInfo, "Ladder init info is null");
 
         if (ladderInitInfo.getLadderHeight() < MINIMUM_HEIGHT_OF_LADDER) {
             throw new IllegalArgumentException("Ladder height must be larger or equal to " + MINIMUM_HEIGHT_OF_LADDER);

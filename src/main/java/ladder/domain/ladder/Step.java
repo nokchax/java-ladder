@@ -2,6 +2,7 @@ package ladder.domain.ladder;
 
 import ladder.domain.init.LadderInitInfo;
 import ladder.domain.ladder.footstep.FootStepCreateStrategy;
+import ladder.util.ObjectUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -51,9 +52,7 @@ public class Step {
     }
 
     private void validate(final LadderInitInfo ladderInitInfo) {
-        if (Objects.isNull(ladderInitInfo)) {
-            throw new IllegalArgumentException("Init info is null");
-        }
+        ObjectUtil.checkNull(ladderInitInfo, "Init info is null");
 
         if (ladderInitInfo.getLadderWidth() < MINIMUM_LADDER_WIDTH) {
             throw new IllegalArgumentException("Ladder width must larger or equal to " + MINIMUM_LADDER_WIDTH);
