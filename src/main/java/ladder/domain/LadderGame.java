@@ -7,13 +7,13 @@ import ladder.domain.player.Players;
 import ladder.util.ObjectUtil;
 
 public class LadderGame {
-    private final Players players;
+    private final PlayerAndPrize playerAndPrize;
     private final Ladder ladder;
 
     private LadderGame(final LadderGameInitInfo ladderGameInitInfo) {
         ObjectUtil.checkNull(ladderGameInitInfo, "Ladder init info is null");
 
-        this.players = Players.init(ladderGameInitInfo.getNames());
+        this.playerAndPrize = PlayerAndPrize.init(ladderGameInitInfo.getPlayerAndPrizeInitInfo());
         this.ladder = Ladder.init(ladderGameInitInfo.getLadderInitInfo());
     }
 
@@ -22,6 +22,6 @@ public class LadderGame {
     }
 
     public MatchResultDto getMatchResult() {
-        return MatchResultDto.of(players.getPlayersName(), ladder.getSteps());
+        return MatchResultDto.of(playerAndPrize.getPlayers(), ladder.getSteps());
     }
 }

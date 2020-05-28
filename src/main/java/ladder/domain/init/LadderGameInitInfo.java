@@ -9,7 +9,7 @@ public class LadderGameInitInfo {
     private final PlayerAndPrizeInitInfo playerAndPrizeInitInfo;
 
     private LadderGameInitInfo(final PlayerAndPrizeInitInfo playerAndPrizeInitInfo, final int height) {
-        ObjectUtil.checkNull(playerAndPrizeInitInfo, "PlayerAndPrize init info is null");
+        ObjectUtil.checkNull(playerAndPrizeInitInfo, "PlayerAndPrizeInitInfo is null");
 
         this.playerAndPrizeInitInfo = playerAndPrizeInitInfo;
         this.ladderInitInfo = LadderInitInfo.init(height, playerAndPrizeInitInfo.playerCount());
@@ -23,11 +23,15 @@ public class LadderGameInitInfo {
         return ladderInitInfo;
     }
 
+    public PlayerAndPrizeInitInfo getPlayerAndPrizeInitInfo() {
+        return playerAndPrizeInitInfo;
+    }
+
     public List<String> getNames() {
         return playerAndPrizeInitInfo.getNames();
     }
 
-    public List<String>  getPrizes() {
+    public List<String> getPrizes() {
         return playerAndPrizeInitInfo.getPrizes();
     }
 }
