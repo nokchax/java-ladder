@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Prizes {
-    public static final int NUM_OF_MINIMUM_PRIZE = 1;
+    private static final int NUM_OF_MINIMUM_PRIZE = 1;
+
     private final List<Prize> prizes;
 
     private Prizes(final List<String> prizes) {

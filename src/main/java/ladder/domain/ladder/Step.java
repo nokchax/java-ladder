@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 // 사다리 한단
 public class Step {
-    public static final int MINIMUM_LADDER_WIDTH = 1;
+    private static final int MINIMUM_LADDER_WIDTH = 1;
 
     private final List<Column> columns;
 
