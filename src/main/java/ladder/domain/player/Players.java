@@ -22,7 +22,7 @@ public class Players {
         ObjectUtil.checkNull(names, "Players names is null");
 
         if (names.size() < NUM_OF_MINIMUM_PLAYER) {
-            throw new IllegalArgumentException("Players size must be at least " + NUM_OF_MINIMUM_PLAYER);
+            throw new IllegalArgumentException("Players are required at least " + NUM_OF_MINIMUM_PLAYER);
         }
     }
 
