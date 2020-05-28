@@ -1,20 +1,20 @@
-package ladder.domain.match;
+package ladder.domain.ladder;
 
 import ladder.util.ObjectUtil;
 
 import java.util.List;
 
-public class MatchResult {
+public class TakeLadderResult {
     private static final int ZERO = 0;
     private final List<Integer> matchPositions;
 
-    private MatchResult(final List<Integer> matchPositions) {
+    private TakeLadderResult(final List<Integer> matchPositions) {
         validate(matchPositions);
 
         this.matchPositions = matchPositions;
     }
 
-    private void validate(List<Integer> matchPositions) {
+    private void validate(final List<Integer> matchPositions) {
         ObjectUtil.checkNull(matchPositions, "MatchPositions is null");
 
         if (matchPositions.isEmpty()) {
@@ -22,8 +22,8 @@ public class MatchResult {
         }
     }
 
-    public static MatchResult init(final List<Integer> matchPositions) {
-        return new MatchResult(matchPositions);
+    public static TakeLadderResult init(final List<Integer> matchPositions) {
+        return new TakeLadderResult(matchPositions);
     }
 
     public int getResultPositionOf(final int startPosition) {

@@ -3,7 +3,7 @@ package ladder.domain;
 import ladder.domain.dto.MatchResultDto;
 import ladder.domain.init.LadderGameInitInfo;
 import ladder.domain.ladder.Ladder;
-import ladder.domain.player.Players;
+import ladder.domain.ladder.TakeLadderResult;
 import ladder.util.ObjectUtil;
 
 public class LadderGame {
@@ -22,6 +22,8 @@ public class LadderGame {
     }
 
     public MatchResultDto getMatchResult() {
+        TakeLadderResult takeLadderResult = ladder.takeLadders();
+
         return MatchResultDto.of(playerAndPrize.getPlayers(), ladder.getSteps());
     }
 }

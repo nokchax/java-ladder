@@ -21,7 +21,7 @@ public class Players {
         ObjectUtil.checkNull(names, "Players names is null");
     }
 
-    public static Players init(List<String> names) {
+    public static Players init(final List<String> names) {
         return new Players(names);
     }
 
