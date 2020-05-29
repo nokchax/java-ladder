@@ -26,12 +26,16 @@ public class LadderApplication {
 
         String playerName;
         while (!(playerName = ConsoleInput.inputPlayerToSeeResult()).equalsIgnoreCase(EXIT)) {
-            if (playerName.equalsIgnoreCase(ALL)) {
-                ConsoleOutput.showAllMatchResult(matchResult);
-                continue;
-            }
-
-            ConsoleOutput.showResult(matchResult, playerName);
+            showResult(matchResult, playerName);
         }
+    }
+
+    private static void showResult(final MatchResultDto matchResult, final String playerName) {
+        if (playerName.equalsIgnoreCase(ALL)) {
+            ConsoleOutput.showAllMatchResult(matchResult);
+            return;
+        }
+
+        ConsoleOutput.showResult(matchResult, playerName);
     }
 }
