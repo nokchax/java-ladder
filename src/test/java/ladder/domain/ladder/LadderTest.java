@@ -58,7 +58,7 @@ class LadderTest {
         assertThat(ladder.takeLadders().getResultPositionOf(startPosition)).isEqualTo(expected);
     }
 
-    private static Stream<Arguments> takeLadder() {
+    private static Stream<Arguments> takeLadders() {
         Ladder ladder = Ladder.init(LadderInitInfo.init(LadderSize.init(5, 3), () -> true));
 
         return Stream.of(
