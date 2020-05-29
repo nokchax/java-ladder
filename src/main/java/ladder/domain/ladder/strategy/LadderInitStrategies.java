@@ -71,7 +71,7 @@ public enum LadderInitStrategies implements LadderInitStrategy {
     static class Type {
         static final Type HARD_TYPE = new Type("상", 7, 4, 2);
         static final Type MEDIUM_TYPE = new Type("중", 5, 2, 5);
-        static final Type EASY_TYPE = new Type("하", 2, 1, 8);
+        static final Type EASY_TYPE = new Type("하", 2, 3, 7);
 
         String type;
         int base;
