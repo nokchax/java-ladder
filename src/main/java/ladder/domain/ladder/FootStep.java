@@ -11,11 +11,11 @@ public enum FootStep {
     RIGHT(x -> x + 1),
     NONE(x -> x);
 
+    private final Function<Integer, Integer> mover;
+
     FootStep(final Function<Integer, Integer> mover) {
         this.mover = mover;
     }
-
-    private final Function<Integer, Integer> mover;
 
     public static FootStep init(final FootStepCreateStrategy footStepCreateStrategy) {
         return makeFootStep(footStepCreateStrategy);
