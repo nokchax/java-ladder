@@ -1,31 +1,32 @@
 package ladder.domain.init;
 
-import ladder.domain.ladder.footstep.FootStepCreateStrategy;
-import ladder.domain.ladder.footstep.HalfChanceGenerator;
+import ladder.domain.ladder.strategy.LadderInitStrategies;
+import ladder.domain.ladder.strategy.LadderInitStrategy;
+import ladder.domain.ladder.strategy.footstep.FootStepCreateStrategy;
 import ladder.util.ObjectUtil;
 
 public class LadderInitInfo {
-    private final FootStepCreateStrategy footStepCreateStrategy;
+    private final LadderInitStrategy ladderInitStrategy;
     private final LadderSize ladderSize;
 
-    private LadderInitInfo(final LadderSize ladderSize, final FootStepCreateStrategy footStepCreateStrategy) {
-        ObjectUtil.checkNull(ladderSize, footStepCreateStrategy);
+    private LadderInitInfo(final LadderSize ladderSize, final LadderInitStrategy ladderInitStrategy) {
+        ObjectUtil.checkNull(ladderSize, ladderInitStrategy);
 
         this.ladderSize = ladderSize;
-        this.footStepCreateStrategy = footStepCreateStrategy;
+        this.ladderInitStrategy = ladderInitStrategy;
     }
 
     public static LadderInitInfo init(final LadderSize ladderSize,
-                                      final FootStepCreateStrategy footStepCreateStrategy) {
-        return new LadderInitInfo(ladderSize, footStepCreateStrategy);
+                                      final LadderInitStrategy ladderInitStrategy) {
+        return new LadderInitInfo(ladderSize, ladderInitStrategy);
     }
 
     public static LadderInitInfo init(final LadderSize ladderSize) {
-        return init(ladderSize, new HalfChanceGenerator());
+        return init(ladderSize, LadderInitStrategies.DEFAULT);
     }
 
     public FootStepCreateStrategy getFootStepCreateStrategy() {
-        return footStepCreateStrategy;
+        return ladderInitStrategy.getFootStepCreateStrategy();
     }
 
     public int getLadderHeight() {
