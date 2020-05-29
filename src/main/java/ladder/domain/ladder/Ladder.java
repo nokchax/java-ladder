@@ -46,7 +46,7 @@ public class Ladder {
         return LadderTakeResult.init(matchPositions);
     }
 
-    public int takeLadder(final int startPosition) {
+    private int takeLadder(final int startPosition) {
         return steps.stream()
                 .reduce(startPosition,
                         (byPosition, step) -> step.takeLadder(byPosition),

@@ -54,8 +54,8 @@ class LadderTest {
     @ParameterizedTest
     @MethodSource
     @DisplayName("사다리 여러개를 탔을때 테스트")
-    void takeLadder(final Ladder ladder, final int startPosition, final int expected) {
-        assertThat(ladder.takeLadder(startPosition)).isEqualTo(expected);
+    void takeLadders(final Ladder ladder, final int startPosition, final int expected) {
+        assertThat(ladder.takeLadders().getResultPositionOf(startPosition)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> takeLadder() {
