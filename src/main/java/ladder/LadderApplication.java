@@ -22,7 +22,7 @@ public class LadderApplication {
         LadderGame ladderGame = LadderGame.init(LadderGameInitInfo.init(playerAndPrizeInitInfo, ladderHeight));
 
         ConsoleOutput.showLadderInfo(ladderGame.getLadderInfo());
-        MatchResultDto matchResult = ladderGame.getMatchResult();
+        MatchResultDto matchResult = ladderGame.play();
 
         String playerName;
         while (!(playerName = ConsoleInput.inputPlayerToSeeResult()).equalsIgnoreCase(EXIT)) {

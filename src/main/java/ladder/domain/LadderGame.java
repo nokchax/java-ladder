@@ -23,7 +23,7 @@ public class LadderGame {
         return new LadderGame(ladderGameInitInfo);
     }
 
-    public MatchResultDto getMatchResult() {
+    public MatchResultDto play() {
         Map<String, String> playerAndPrizeMatchResult =
                 playerAndPrize.matchPlayerAndPrize(ladder.takeLadders());
 
