@@ -1,6 +1,7 @@
 package ladder.domain.ladder;
 
 import ladder.domain.init.LadderInitInfo;
+import ladder.domain.init.LadderSize;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -28,7 +29,7 @@ class LadderTest {
     @DisplayName("초기화 : 성공후 사다리 높이가 정확한지")
     void height() {
         int height = 5;
-        LadderInitInfo ladderInitInfo = LadderInitInfo.init(height, 1);
+        LadderInitInfo ladderInitInfo = LadderInitInfo.init(LadderSize.init(1, height));
         Ladder ladder = Ladder.init(ladderInitInfo);
 
         assertThat(ladder.getSteps()).hasSize(height);
@@ -47,7 +48,7 @@ class LadderTest {
     @DisplayName("초기화 실패 : 사다리 높이가 음수")
     void initFailWithNegativeHeight(final int height) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> Ladder.init(LadderInitInfo.init(height, 1)));
+                .isThrownBy(() -> Ladder.init(LadderInitInfo.init(LadderSize.init(1, height))));
     }
 
     @ParameterizedTest
@@ -58,7 +59,7 @@ class LadderTest {
     }
 
     private static Stream<Arguments> takeLadder() {
-        Ladder ladder = Ladder.init(LadderInitInfo.init(3, 5, () -> true));
+        Ladder ladder = Ladder.init(LadderInitInfo.init(LadderSize.init(5, 3), () -> true));
 
         return Stream.of(
                 Arguments.of(ladder, 0, 1),

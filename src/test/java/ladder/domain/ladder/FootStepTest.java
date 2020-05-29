@@ -1,6 +1,7 @@
 package ladder.domain.ladder;
 
 import ladder.domain.init.LadderInitInfo;
+import ladder.domain.init.LadderSize;
 import ladder.domain.ladder.footstep.FootStepCreateStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -107,8 +108,8 @@ class FootStepTest {
 
     private static Stream<Arguments> toFootSteps() {
         return Stream.of(
-                Arguments.of(LadderInitInfo.init(1, 5, () -> true), Arrays.asList(true, false, true, false, false)),
-                Arguments.of(LadderInitInfo.init(1, 5, () -> false), Arrays.asList(false, false, false, false, false))
+                Arguments.of(LadderInitInfo.init(LadderSize.init(5, 1), () -> true), Arrays.asList(true, false, true, false, false)),
+                Arguments.of(LadderInitInfo.init(LadderSize.init(5, 1), () -> false), Arrays.asList(false, false, false, false, false))
         );
     }
 

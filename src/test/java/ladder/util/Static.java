@@ -1,6 +1,7 @@
 package ladder.util;
 
 import ladder.domain.init.LadderInitInfo;
+import ladder.domain.init.LadderSize;
 import ladder.domain.ladder.Column;
 import ladder.domain.ladder.footstep.FootStepCreateStrategy;
 
@@ -20,7 +21,7 @@ public class Static {
     public static final Column COLUMN_WITHOUT_FOOTSTEP = Column.init(FALSE_RETURN_STRATEGY);
 
     public static final LadderInitInfo LADDER_INIT_INFO_WITH_TRUE_STRATEGY =
-            LadderInitInfo.init(HEIGHT, WIDTH, TRUE_RETURN_STRATEGY);
+            LadderInitInfo.init(LadderSize.init(WIDTH, HEIGHT), TRUE_RETURN_STRATEGY);
 
     private Static() {}
 }

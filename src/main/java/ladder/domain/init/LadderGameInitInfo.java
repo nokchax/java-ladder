@@ -9,8 +9,9 @@ public class LadderGameInitInfo {
     private LadderGameInitInfo(final PlayerAndPrizeInitInfo playerAndPrizeInitInfo, final int height) {
         ObjectUtil.checkNull(playerAndPrizeInitInfo, "PlayerAndPrizeInitInfo is null");
 
+        LadderSize ladderSize = LadderSize.init(playerAndPrizeInitInfo.getPlayerCount(), height);
         this.playerAndPrizeInitInfo = playerAndPrizeInitInfo;
-        this.ladderInitInfo = LadderInitInfo.init(height, playerAndPrizeInitInfo.getPlayerCount());
+        this.ladderInitInfo = LadderInitInfo.init(ladderSize);
     }
 
     public static LadderGameInitInfo init(final PlayerAndPrizeInitInfo playerAndPrizeInitInfo, final int height) {
