@@ -35,7 +35,7 @@ public class Step {
             return;
         }
 
-        Stream.generate(() -> createNextColumn(ladderInitInfo.getLadderInitStrategy()))
+        Stream.generate(() -> createNextColumn(ladderInitInfo.getLadderInitStrategies()))
                 .limit(ladderInitInfo.getLadderWidth() - 2) //add except first and last column
                 .forEach(columns::add);
     }
@@ -46,7 +46,7 @@ public class Step {
             return;
         }
 
-        columns.add(Column.init(ladderInitInfo.getLadderInitStrategy()));
+        columns.add(Column.init(ladderInitInfo.getLadderInitStrategies()));
     }
 
     private void validate(final LadderInitInfo ladderInitInfo) {

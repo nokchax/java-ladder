@@ -1,31 +1,31 @@
 package ladder.domain.init;
 
-import ladder.domain.ladder.strategy.LadderInitStrategies;
 import ladder.domain.ladder.strategy.LadderInitStrategy;
+import ladder.domain.ladder.strategy.LadderInitStrategies;
 import ladder.util.ObjectUtil;
 
 public class LadderInitInfo {
-    private final LadderInitStrategy ladderInitStrategy;
+    private final LadderInitStrategies ladderInitStrategies;
     private final LadderSize ladderSize;
 
-    private LadderInitInfo(final LadderSize ladderSize, final LadderInitStrategy ladderInitStrategy) {
-        ObjectUtil.checkNull(ladderSize, ladderInitStrategy);
+    private LadderInitInfo(final LadderSize ladderSize, final LadderInitStrategies ladderInitStrategies) {
+        ObjectUtil.checkNull(ladderSize, ladderInitStrategies);
 
         this.ladderSize = ladderSize;
-        this.ladderInitStrategy = ladderInitStrategy;
+        this.ladderInitStrategies = ladderInitStrategies;
     }
 
     public static LadderInitInfo init(final LadderSize ladderSize,
-                                      final LadderInitStrategy ladderInitStrategy) {
-        return new LadderInitInfo(ladderSize, ladderInitStrategy);
+                                      final LadderInitStrategies ladderInitStrategies) {
+        return new LadderInitInfo(ladderSize, ladderInitStrategies);
     }
 
     public static LadderInitInfo init(final LadderSize ladderSize) {
-        return init(ladderSize, LadderInitStrategies.DEFAULT);
+        return init(ladderSize, LadderInitStrategy.DEFAULT);
     }
 
-    public LadderInitStrategy getLadderInitStrategy() {
-        return ladderInitStrategy;
+    public LadderInitStrategies getLadderInitStrategies() {
+        return ladderInitStrategies;
     }
 
     public int getLadderHeight() {

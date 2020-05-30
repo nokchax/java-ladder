@@ -1,6 +1,6 @@
 package ladder.domain.init;
 
-import ladder.domain.ladder.strategy.LadderInitStrategy;
+import ladder.domain.ladder.strategy.LadderInitStrategies;
 import ladder.util.ObjectUtil;
 
 public class LadderGameInitInfo {
@@ -8,19 +8,19 @@ public class LadderGameInitInfo {
     private final PlayerAndPrizeInitInfo playerAndPrizeInitInfo;
 
     private LadderGameInitInfo(final PlayerAndPrizeInitInfo playerAndPrizeInitInfo,
-                               final LadderInitStrategy ladderInitStrategy) {
-        ObjectUtil.checkNull(playerAndPrizeInitInfo, ladderInitStrategy);
+                               final LadderInitStrategies ladderInitStrategies) {
+        ObjectUtil.checkNull(playerAndPrizeInitInfo, ladderInitStrategies);
 
-        int height = ladderInitStrategy.decideHeight();
+        int height = ladderInitStrategies.decideHeight();
 
         LadderSize ladderSize = LadderSize.init(playerAndPrizeInitInfo.getPlayerCount(), height);
         this.playerAndPrizeInitInfo = playerAndPrizeInitInfo;
-        this.ladderInitInfo = LadderInitInfo.init(ladderSize, ladderInitStrategy);
+        this.ladderInitInfo = LadderInitInfo.init(ladderSize, ladderInitStrategies);
     }
 
     public static LadderGameInitInfo init(final PlayerAndPrizeInitInfo playerAndPrizeInitInfo,
-                                          final LadderInitStrategy ladderInitStrategy) {
-        return new LadderGameInitInfo(playerAndPrizeInitInfo, ladderInitStrategy);
+                                          final LadderInitStrategies ladderInitStrategies) {
+        return new LadderGameInitInfo(playerAndPrizeInitInfo, ladderInitStrategies);
     }
 
     public LadderInitInfo getLadderInitInfo() {

@@ -3,7 +3,7 @@ package ladder.util;
 import ladder.domain.init.LadderInitInfo;
 import ladder.domain.init.LadderSize;
 import ladder.domain.ladder.Column;
-import ladder.domain.ladder.strategy.LadderInitStrategy;
+import ladder.domain.ladder.strategy.LadderInitStrategies;
 import ladder.domain.ladder.strategy.footstep.FootStepCreateStrategy;
 
 import java.util.Arrays;
@@ -21,7 +21,7 @@ public class Static {
     public static final Column COLUMN_WITH_LEFT_FOOTSTEP = COLUMN_WITH_RIGHT_FOOTSTEP.createNext(TRUE_RETURN_STRATEGY);
     public static final Column COLUMN_WITHOUT_FOOTSTEP = Column.init(FALSE_RETURN_STRATEGY);
 
-    public static final LadderInitStrategy TRUE_RETURN_INIT_STRATEGY = new LadderInitStrategy() {
+    public static final LadderInitStrategies TRUE_RETURN_INIT_STRATEGY = new LadderInitStrategies() {
         @Override
         public int decideHeight() {
             return 1;
@@ -33,7 +33,7 @@ public class Static {
         }
     };
 
-    public static final LadderInitStrategy FALSE_RETURN_INIT_STRATEGY = new LadderInitStrategy() {
+    public static final LadderInitStrategies FALSE_RETURN_INIT_STRATEGY = new LadderInitStrategies() {
         @Override
         public int decideHeight() {
             return 1;
