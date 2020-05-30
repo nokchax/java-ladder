@@ -54,18 +54,18 @@ public enum LadderInitStrategies implements LadderInitStrategy {
         return STRATEGIES.get(type);
     }
 
-    @Override
-    public FootStepCreateStrategy getFootStepCreateStrategy() {
-        return footStepCreateStrategy;
-    }
-
-    @Override
-    public LadderHeightStrategy getLadderHeightStrategy() {
-        return ladderHeightStrategy;
-    }
-
     private String getType() {
         return type;
+    }
+
+    @Override
+    public boolean isGenerable() {
+        return footStepCreateStrategy.isGenerable();
+    }
+
+    @Override
+    public int decideHeight() {
+        return ladderHeightStrategy.decideHeight();
     }
 
     static class Type {

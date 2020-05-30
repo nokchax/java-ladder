@@ -2,7 +2,6 @@ package ladder.domain.init;
 
 import ladder.domain.ladder.strategy.LadderInitStrategies;
 import ladder.domain.ladder.strategy.LadderInitStrategy;
-import ladder.domain.ladder.strategy.footstep.FootStepCreateStrategy;
 import ladder.util.ObjectUtil;
 
 public class LadderInitInfo {
@@ -25,8 +24,8 @@ public class LadderInitInfo {
         return init(ladderSize, LadderInitStrategies.DEFAULT);
     }
 
-    public FootStepCreateStrategy getFootStepCreateStrategy() {
-        return ladderInitStrategy.getFootStepCreateStrategy();
+    public LadderInitStrategy getLadderInitStrategy() {
+        return ladderInitStrategy;
     }
 
     public int getLadderHeight() {

@@ -5,7 +5,6 @@ import ladder.domain.init.LadderSize;
 import ladder.domain.ladder.Column;
 import ladder.domain.ladder.strategy.LadderInitStrategy;
 import ladder.domain.ladder.strategy.footstep.FootStepCreateStrategy;
-import ladder.domain.ladder.strategy.ladderheight.LadderHeightStrategy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,25 +23,25 @@ public class Static {
 
     public static final LadderInitStrategy TRUE_RETURN_INIT_STRATEGY = new LadderInitStrategy() {
         @Override
-        public FootStepCreateStrategy getFootStepCreateStrategy() {
-            return () -> true;
+        public int decideHeight() {
+            return 1;
         }
 
         @Override
-        public LadderHeightStrategy getLadderHeightStrategy() {
-            return () -> 1;
+        public boolean isGenerable() {
+            return true;
         }
     };
 
     public static final LadderInitStrategy FALSE_RETURN_INIT_STRATEGY = new LadderInitStrategy() {
         @Override
-        public FootStepCreateStrategy getFootStepCreateStrategy() {
-            return () -> false;
+        public int decideHeight() {
+            return 1;
         }
 
         @Override
-        public LadderHeightStrategy getLadderHeightStrategy() {
-            return () -> 1;
+        public boolean isGenerable() {
+            return false;
         }
     };
 
