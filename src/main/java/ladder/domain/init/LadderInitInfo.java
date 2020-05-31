@@ -1,6 +1,7 @@
 package ladder.domain.init;
 
-import ladder.domain.ladder.strategy.LadderInitStrategy;
+import ladder.domain.ladder.strategy.LadderInitStrategyWithLevel;
+import ladder.domain.ladder.strategy.LadderLevel;
 import ladder.domain.ladder.strategy.LadderInitStrategies;
 import ladder.util.ObjectUtil;
 
@@ -21,7 +22,7 @@ public class LadderInitInfo {
     }
 
     public static LadderInitInfo init(final LadderSize ladderSize) {
-        return init(ladderSize, LadderInitStrategy.DEFAULT);
+        return init(ladderSize, LadderInitStrategyWithLevel.init(LadderLevel.DEFAULT));
     }
 
     public LadderInitStrategies getLadderInitStrategies() {
